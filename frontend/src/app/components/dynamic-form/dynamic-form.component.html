@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registration Form</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <form [formGroup]="myForm">
+    <ion-item *ngFor="let field of formData?.fields">
+      <ion-label>{{ field.label }}</ion-label>
+      <ion-input
+        [type]="field.type"
+        [formControlName]="field.name"
+        [value]="field.value"
+      ></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" (click)="submit()">
+      Submit
+    </ion-button>
+  </form>
+</ion-content>

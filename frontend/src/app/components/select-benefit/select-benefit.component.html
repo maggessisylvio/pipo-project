@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Select Benefit</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <div *ngIf="action === 'report'">
+      <ion-item *ngFor="let benefit of benefits">
+        <ion-label (click)="setBenefit(benefit)">
+          <h2>{{ benefit.name }}</h2>
+        </ion-label>
+      </ion-item>
+    </div>
+    <div *ngIf="action === 'register'">
+      <ion-item *ngFor="let benefit of benefits">
+        <ion-checkbox
+          slot="start"
+          color="tertiary"
+          (ionChange)="addBenefit($event, benefit.id)"
+        ></ion-checkbox>
+        <ion-label>{{ benefit.name }}</ion-label>
+      </ion-item>
+      <ion-button expand="block" (click)="submit()"> Next </ion-button>
+    </div>
+  </ion-list>
+</ion-content>

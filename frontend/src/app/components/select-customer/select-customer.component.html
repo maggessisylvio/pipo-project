@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Select Customer</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ion-item *ngFor="let customer of customers">
+      <ion-label (click)="setCustomer(customer)">
+        <h2>{{ customer.name }}</h2>
+        <p>{{ customer.cnpj | cpfCnpj }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
